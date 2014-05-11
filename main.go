@@ -1,10 +1,11 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"github.com/chet1211221/golanganidb/setupenv"
 )
 
 func main() {
-	fmt.Println(setupenv.GetHomeDir())
+	setupenv.CreateDir(setupenv.GetHomeDir())
+	setupenv.CreateDir("/")
 }
