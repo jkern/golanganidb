@@ -5,13 +5,14 @@ import (
 	"os"
 )
 
-func CreateDir(pathroot string) {
+func CreateDir(pathroot string) (string, string) {
 	programpath := pathroot + "/golanganidb"
 	configpath := pathroot + "/.golanganidb"
 	cachepath := programpath + "/cache"
 	makedir(programpath)
 	makedir(configpath)
 	makedir(cachepath)
+	return programpath, configpath
 }
 
 // exists returns whether the given file or directory exists or not
