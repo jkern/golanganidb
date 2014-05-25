@@ -1,4 +1,4 @@
-package setupenv
+package env
 
 import (
 	//"os"
@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"strings"
 )
+
 //Read the preexisting config file into a Config struct to be used later on in the program. Need to work on adding the read config into the struck
 func ReadConfig(configfile string) {
 	configfilebyte, err := ioutil.ReadFile(configfile)

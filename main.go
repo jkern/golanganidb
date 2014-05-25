@@ -2,17 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/chet1211221/golanganidb/setupenv"
+	"github.com/chet1211221/golanganidb/env"
 )
 
 func main() {
-	programdatapath, programconfigpath := setupenv.CreateDir(setupenv.GetHomeDir())
+	programdatapath, programconfigpath := env.CreateDir(env.GetHomeDir())
 	fmt.Println(programdatapath)
 	fmt.Println(programconfigpath)
-	initialconfig := setupenv.Config{"golanganidb", 1, 1, "http://api.anidb.net", 9001}
-	setupenv.CreateConfig(programconfigpath+"/golanganidb.conf", &initialconfig)
+	initialconfig := env.Config{"golanganidb", 1, 1, "http://api.anidb.net", 9001}
+	env.CreateConfig(programconfigpath+"/golanganidb.conf", &initialconfig)
 	fmt.Printf("%v\n", initialconfig)
-	//runningconfig := new(setupenv.Config)	
-	setupenv.ReadConfig(programconfigpath + "/golanganidb.conf")
+	//runningconfig := new(setupenv.Config)
+	env.ReadConfig(programconfigpath + "/golanganidb.conf")
 
 }

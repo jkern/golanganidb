@@ -1,4 +1,4 @@
-package setupenv
+package env
 
 import (
 	"fmt"
@@ -24,12 +24,4 @@ func CreateConfig(configfile string, initialconfig *Config) {
 		configfilecreated.WriteString("port=" + strconv.Itoa(initialconfig.Port) + "\r\n")
 	}
 
-}
-
-type Config struct {
-	Client    string
-	Clientver int
-	Protover  int
-	Url       string
-	Port      int
 }
