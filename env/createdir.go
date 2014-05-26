@@ -6,6 +6,7 @@ import (
 )
 
 func CreateDir(pathroot string) (string, string) {
+	//pathroot is defined in main
 	programpath := pathroot + "/golanganidb"
 	configpath := pathroot + "/.golanganidb"
 	cachepath := programpath + "/cache"
