@@ -3,7 +3,6 @@ package env
 import (
 	"fmt"
 	"os"
-	"log"
 )
 
 func CreateDir(pathroot string) (string, string) {
