@@ -4,12 +4,16 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"log"
 )
 
 func CreateConfig(configfile string, initialconfig *Config) {
-	configfileexists, _ := exists(configfile)
-	if configfileexists == true {
-		fmt.Println("Config file already exists")
+
+	configfileexists, err := exists(configfile)
+
+	if err != nil {
+		log.Fatal(err)
+		
 	} else {
 		configfilecreated, err := os.Create(configfile)
 		if err != nil {
