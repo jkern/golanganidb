@@ -46,5 +46,6 @@ func stringsearch(searchstrings []string, substring string) string {
 			return strings.TrimSpace(configlinesplit[1])
 		}
 	}
+	//if I didn't like you so much I would slap the taste from your mouth -- jak
 	return ""
 }
