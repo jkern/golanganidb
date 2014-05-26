@@ -4,29 +4,37 @@ import (
 	//"os"
 	"fmt"
 	"io/ioutil"
+	"strconv"
 	"strings"
 )
 
 //Read the preexisting config file into a Config struct to be used later on in the program. Need to work on adding the read config into the struck
-func ReadConfig(configfile string) {
+func ReadConfig(configfile string) *Config {
 	configfilebyte, err := ioutil.ReadFile(configfile)
 	if err != nil {
 		fmt.Println(err)
 	}
 	configfilestring := strings.SplitAfter(string(configfilebyte[:]), "\r\n")
-	fmt.Println(configfilestring)
-	configparams := []string{"client", "clientver", "protover", "url", "port"}
-	for a := range configparams {
-		b := stringsearch(configfilestring, configparams[a])
-		fmt.Println(b)
+	configstruct := new(Config)
+	configstruct.configtostruct(configfilestring)
+	//fmt.Println(configfilestring)
+	//configparams := []string{"client", "clientver", "protover", "url", "port"}
+	//for a := range configparams {
+	//b := stringsearch(configfilestring, configparams[a])
+	//fmt.Println(b)
 
-	}
-
+	//}
+	return configstruct
 }
 
-//func (h *Config) configtostruct(configstring []string) *Config {
-
-//}
+func (h *Config) configtostruct(configstring []string) *Config {
+	h.Client = stringsearch(configstring, "client")
+	h.Clientver, _ = strconv.Atoi(stringsearch(configstring, "clientver"))
+	h.Protover, _ = strconv.Atoi(stringsearch(configstring, "protover"))
+	h.Url = stringsearch(configstring, "url")
+	h.Port, _ = strconv.Atoi(stringsearch(configstring, "port"))
+	return h
+}
 
 func stringsearch(searchstrings []string, substring string) string {
 	for g := range searchstrings {
